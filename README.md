@@ -31,9 +31,10 @@ In case of error, the reponse will have the following form:
  * `statusCode`: (int >= 400)
  * `error`, (string) error message
 
-###
 
 ## API
+
+The examples below are not fully functional. You must call the query() for the HTTP call to be made and add a listener on `ready` event as explained in *Usage* section.
 
 ### Regions: all the regions covered by navitia
 
@@ -45,4 +46,16 @@ navitia().regions()
 
 ```
 navitia().region('paris')
+```
+
+### Lines: show lines in a given region
+
+```
+navitia().region('paris').lines()
+```
+
+### Lines: show a line in a given region
+
+```
+navitia().region('paris').lines(/* line id */)
 ```
