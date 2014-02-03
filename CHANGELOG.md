@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.1.3
+-----
+ * refactor lib to support multiple call and pagination
+
 0.1.2
 -----
  * add example directory
