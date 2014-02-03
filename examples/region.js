@@ -1,4 +1,4 @@
-var navitia = require('./index');
+var navitia = require('../index');
 
 n = new navitia();
 
