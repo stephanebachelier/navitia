@@ -1,4 +1,17 @@
 {
+  "name": "navitia",
+  "version": "0.1.0",
+  "description": "Navitia API wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "api",
+    "navitia"
+  ],
+  "author": "Stéphane Bachelier <stephane.bachelier@gmail.com>",
+  "license": "MIT",
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -10,5 +23,13 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-uglify": "~0.3.2",
     "jshint-stylish": "~0.1.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephanebachelier/navitia"
+  },
+  "bugs": {
+    "url": "https://github.com/stephanebachelier/navitia/issues"
+  },
+  "homepage": "https://github.com/stephanebachelier/navitia"
 }
