@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.2
+-----
+ * add example directory
+ * add line collection support
+
 0.1.1
 -----
  * documentation
