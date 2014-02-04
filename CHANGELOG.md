@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.1.4
+-----
+ * fix grunt build
+ * small refactoring about path
+ * add journey
+ * add sugar isochrone
+
 0.1.3
 -----
  * refactor lib to support multiple call and pagination
