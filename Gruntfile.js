@@ -2,16 +2,24 @@
 module.exports = function (grunt) {
   'use strict';
 
+  require('load-grunt-tasks')(grunt);
+
   // Project configuration.
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+      ' * <%= pkg.author.name %>\n' +
+      '<%= pkg.homepage ? " * " + pkg.homepage + "\\n" : "" %>' +
+      ' *\n' +
+      ' * Copyright (c) <%= grunt.template.today("yyyy") %>' +
+      ' Licensed <%= pkg.license %>\n' +
+      ' */\n',
     // Task configuration.
+    clean: {
+      build: ['dist']
+    },
     concat: {
       options: {
         banner: '<%= banner %>',
@@ -20,6 +28,14 @@ module.exports = function (grunt) {
       dist: {
         src: ['lib/<%= pkg.name %>.js'],
         dest: 'dist/<%= pkg.name %>.js'
+      }
+    },
+    copy: {
+      files: {
+        expand: true,
+        cwd: 'lib',
+        src: ['**/*.js'],
+        dest: 'dist'
       }
     },
     uglify: {
@@ -39,7 +55,7 @@ module.exports = function (grunt) {
       gruntfile: {
         src: 'Gruntfile.js'
       },
-      lib_test: {
+      lib: {
         src: ['lib/**/*.js', 'test/**/*.js']
       }
     },
@@ -48,9 +64,9 @@ module.exports = function (grunt) {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
-      lib_test: {
-        files: '<%= jshint.lib_test.src %>',
-        tasks: ['jshint:lib_test']
+      lib: {
+        files: '<%= jshint.lib.src %>',
+        tasks: ['jshint:lib']
       }
     },
     release: {
@@ -63,14 +79,9 @@ module.exports = function (grunt) {
     }
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-release');
-
   // Default task.
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+  grunt.registerTask('default', 'build');
+
+  grunt.registerTask('build', ['clean', 'jshint', 'concat', 'copy']);
 
 };
