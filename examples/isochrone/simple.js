@@ -1,6 +1,4 @@
-var navitia = require('../dist/navitia');
-
-n = new navitia();
+var n = require(process.cwd() + '/dist/navitia');
 
 n.query()
   .region('paris')
