@@ -56,7 +56,7 @@ module.exports = function (grunt) {
         src: 'Gruntfile.js'
       },
       lib: {
-        src: ['lib/**/*.js', 'test/**/*.js']
+        src: ['lib/**/*.js']
       }
     },
     watch: {
@@ -66,7 +66,7 @@ module.exports = function (grunt) {
       },
       lib: {
         files: '<%= jshint.lib.src %>',
-        tasks: ['jshint:lib']
+        tasks: ['build']
       }
     },
     release: {
@@ -82,6 +82,6 @@ module.exports = function (grunt) {
   // Default task.
   grunt.registerTask('default', 'build');
 
-  grunt.registerTask('build', ['clean', 'jshint', 'concat', 'copy']);
+  grunt.registerTask('build', ['clean', 'jshint:lib', 'concat', 'copy']);
 
 };
