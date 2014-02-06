@@ -8,7 +8,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+    banner: '/*! <%= pkg.title || pkg.name %> - <%= pkg.version %> - ' +
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       ' * <%= pkg.author.name %>\n' +
       '<%= pkg.homepage ? " * " + pkg.homepage + "\\n" : "" %>' +
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
       ' */\n',
     // Task configuration.
     clean: {
-      build: ['dist']
+      dist: ['dist']
     },
     concat: {
       options: {
@@ -26,12 +26,12 @@ module.exports = function (grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['lib/<%= pkg.name %>.js'],
+        src: ['dist/<%= pkg.name %>.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
     copy: {
-      files: {
+      dist: {
         expand: true,
         cwd: 'lib',
         src: ['**/*.js'],
@@ -70,18 +70,45 @@ module.exports = function (grunt) {
       }
     },
     release: {
-      commitMessage: 'bump version <%= version %>',
-      github: {
-        repo: 'stephanebachelier/navitia',
-        usernameVar: 'stephanebachelier',
-        passwordVar: 'GITHUB_API_TOKEN'
+      bump: {
+        options: {
+          bump: true,
+          add: false,
+          commit: false,
+          tag: false,
+          push: false,
+          pushTags: false,
+          npm : false
+        }
+      },
+      publish: {
+        options: {
+          bump: false,
+          filepath: ['dist'],
+          commitMessage: 'bump version <%= version %>',
+          push: false,
+          pushTags: false,
+          npm : false,
+          github: {
+            repo: 'stephanebachelier/navitia',
+            usernameVar: 'stephanebachelier',
+            passwordVar: 'GITHUB_API_TOKEN'
+          }
+        }
       }
     }
   });
 
+  grunt.registerTask('dist', function () {
+    var version = grunt.option('type') || 'patch'; // default to patch
+    grunt.log.writeln('dist', version);
+    grunt.task.run('release:bump:' + version);
+    grunt.task.run('build');
+    grunt.task.run('release:publish');
+  });
   // Default task.
   grunt.registerTask('default', 'build');
 
-  grunt.registerTask('build', ['clean', 'jshint:lib', 'concat', 'copy']);
+  grunt.registerTask('build', ['clean:dist', 'jshint:lib', 'copy:dist', 'concat:dist']);
 
 };

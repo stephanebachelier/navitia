@@ -27,7 +27,7 @@
     "lodash": "~2.4.1",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.5.0",
-    "grunt-release": "~0.6.0"
+    "grunt-release": "git://github.com/stephanebachelier/grunt-release.git#a9b7ee6"
   },
   "repository": {
     "type": "git",
