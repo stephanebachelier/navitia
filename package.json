@@ -1,6 +1,6 @@
 {
   "name": "navitia",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Navitia API wrapper",
   "main": "index.js",
   "scripts": {
@@ -36,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/stephanebachelier/navitia/issues"
   },
-  "homepage": "https://github.com/stephanebachelier/navitia"
+  "homepage": "https://github.com/stephanebachelier/navitia",
+  "dependencies": {
+    "grunt-shell": "~0.6.4"
+  }
 }
