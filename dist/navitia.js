@@ -1,4 +1,4 @@
-/*! navitia - 0.1.5 - 2014-02-06
+/*! navitia - 0.1.6 - 2014-02-21
  * Stéphane Bachelier
  * https://github.com/stephanebachelier/navitia
  *
@@ -29,7 +29,7 @@ var navitia = {
   }
 };
 
-var resources = ['regions', 'region', 'lines', 'journey'];
+var resources = ['regions', 'region', 'lines', 'journey', 'network', 'stopareas', 'stoppoints'];
 
 // attach resource to navitia prototype
 resources.forEach(function (name) {
