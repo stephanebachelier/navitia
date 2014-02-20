@@ -71,7 +71,7 @@ module.exports = function (grunt) {
     },
     shell: {
       commitDist: {
-        command: 'git add ./dist/'
+        command: 'git commit -m "commit dist" ./dist/'
       }
     },
     changelog: {},
