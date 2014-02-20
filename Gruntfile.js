@@ -69,6 +69,12 @@ module.exports = function (grunt) {
         tasks: ['build']
       }
     },
+    shell: {
+      commitDist: {
+        command: 'git add ./dist/'
+      }
+    },
+    changelog: {},
     release: {
       bump: {
         options: {
@@ -84,11 +90,10 @@ module.exports = function (grunt) {
       publish: {
         options: {
           bump: false,
-          filepath: ['dist'],
           commitMessage: 'bump version <%= version %>',
-          push: false,
-          pushTags: false,
-          npm : false,
+          push: true,
+          pushTags: true,
+          npm : true,
           github: {
             repo: 'stephanebachelier/navitia',
             usernameVar: 'stephanebachelier',
@@ -104,6 +109,7 @@ module.exports = function (grunt) {
     grunt.log.writeln('dist', version);
     grunt.task.run('release:bump:' + version);
     grunt.task.run('build');
+    grunt.task.run('shell:commitDist');
     grunt.task.run('release:publish');
   });
   // Default task.
