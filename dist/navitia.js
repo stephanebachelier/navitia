@@ -29,7 +29,7 @@ var navitia = {
   }
 };
 
-var resources = ['regions', 'region', 'lines', 'journey', 'network', 'stopareas', 'stoppoints'];
+var resources = ['regions', 'region', 'lines', 'journey', 'network', 'stopareas', 'stoppoints', 'routes'];
 
 // attach resource to navitia prototype
 resources.forEach(function (name) {
