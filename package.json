@@ -1,6 +1,6 @@
 {
   "name": "navitia",
-  "version": "1.0.0-pre",
+  "version": "1.0.0",
   "description": "Navitia API wrapper",
   "main": "index.js",
   "scripts": {
