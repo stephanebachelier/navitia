@@ -1,4 +1,5 @@
-var n = require(process.cwd() + '/dist/navitia');
+var n = require('../../lib/navitia');
+require('dotenv').load()
 
 // will fail on this query -> only string supported
 
@@ -7,6 +8,9 @@ var coords = {
   lat: 48.984186
 };
 
-n.query().region(coords).end().on('ready', function (res) {
-  console.log('ready', res.resource);
-});
+n.query({apikey: process.env.apikey, debug: process.env.debug })
+  .region(coords)
+  .end()
+  .on('ready', function (res) {
+    console.log('Not supported anymore');
+  });

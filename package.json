@@ -1,6 +1,6 @@
 {
   "name": "navitia",
-  "version": "0.1.7",
+  "version": "1.0.0-pre",
   "description": "Navitia API wrapper",
   "main": "index.js",
   "scripts": {
@@ -18,16 +18,16 @@
   "engines": {
     "node": ">= 0.10.0"
   },
+  "dependencies": {
+    "request": "^2.54.0",
+    "request-debug": "^0.1.1"
+  },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-concat": "~0.3.0",
     "jshint-stylish": "~0.1.5",
-    "lodash": "~2.4.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-release": "git://github.com/stephanebachelier/grunt-release.git#a9b7ee6"
+    "load-grunt-tasks": "^3.1.0"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,9 @@
     "url": "https://github.com/stephanebachelier/navitia/issues"
   },
   "homepage": "https://github.com/stephanebachelier/navitia",
-  "dependencies": {
-    "grunt-shell": "~0.6.4"
+  "optionalDependencies": {
+    "dotenv": "^1.1.0",
+    "moment": "^2.9.0",
+    "node-env-file": "^0.1.7"
   }
 }

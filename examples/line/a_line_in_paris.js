@@ -1,11 +1,13 @@
-var n = require(process.cwd() + '/dist/navitia');
+var n = require('../../lib/navitia');
+require('dotenv').load()
+var moment = require('moment');
+var descriptor = require('./descriptor');
 
-n.query().region('paris').lines('line:RTP:870212').end().on('ready', function (res) {
-  console.log('paris line', res.statusCode);
-  var line = res.resource[0];
-  console.log('> line name ?', line.name);
-  console.log('> line network ?', line.network.name);
-  console.log('> line - routes count: #', line.routes.length);
-  console.assert(res.resource.length, res.pagination.items_on_page);
-});
-
+n.query({apikey: process.env.apikey, debug: process.env.debug})
+  .region('fr-idf')
+  .lines('line:TRN:DUA810801043')
+  .end()
+  .on('ready', function (res) {
+    descriptor(res.resource[0]);
+    console.assert(res.resource.length === res.pagination.items_on_page);
+  });
