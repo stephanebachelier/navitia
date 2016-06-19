@@ -39,7 +39,7 @@ if you want to debug the call you should set `debug` key to true, and it will lo
 
 Since v1, all requests to Navitia API must be authenticated. Navitia supports both `Basic HTTP authentication` and `HTTP Authorization header`. This library only support the last option, which is `HTTP Authorization header`.
 
-See [navitia doc](https://github.com/CanalTP/navitia/blob/dev/documentation/navitia.io/source/integration.rst#authentication)
+See [navitia doc](http://doc.navitia.io/)
 
 The best way to provide the api key is to use a `.env` file using the format giben below. The example also set the `debug` flag to 0
 
